@@ -1,58 +1,41 @@
-# Node modules
+# Learn more https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files
+
+# dependencies
 node_modules/
-npm-debug.log
-yarn-debug.log*
-yarn-error.log*
-
-# Build outputs
-ios/build/
-android/app/build/
-android/.gradle/
-android/.idea/
-
-# Xcode
-*.pbxuser
-!default.pbxuser
-*.mode1v3
-!default.mode1v3
-*.mode2v3
-!default.mode2v3
-*.perspectivev3
-!default.perspectivev3
-xcuserdata/
-DerivedData/
-
-# Bundler
-*.jsbundle
-*.map
-
-# Metro
-.expo/
-.expo-shared/
-dist/
-
-# OS
-.DS_Store
-Thumbs.db
-
-# Env files
-.env
-.env.local
-.env.development
-.env.production
-.env.test
-
-# Watchman
-.watchmanconfig
-
-# Logs
-*.log
-
-# React Native CLI cache
-# (esp. for Hermes or Gradle)
-build/
-.gradle/
 
 # Expo
 .expo/
-.expo-shared/
+dist/
+web-build/
+expo-env.d.ts
+
+# Native
+.kotlin/
+*.orig.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+
+# Metro
+.metro-health-check*
+
+# debug
+npm-debug.*
+yarn-debug.*
+yarn-error.*
+
+# macOS
+.DS_Store
+*.pem
+
+# local env files
+.env*.local
+
+# typescript
+*.tsbuildinfo
+
+# generated native folders
+/ios
+/android
