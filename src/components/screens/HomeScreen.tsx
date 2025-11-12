@@ -52,10 +52,11 @@ export default function HomeScreen() {
                     onPress={() => handleSelectionBoxPress()}
                 >
                     <View style={style.logo} >
-                        <Text style={style.tapcount} >{kasiaTaps}</Text>
+                        <Ionicons name="people-circle-outline" size={50} color="#007AFF" />
                         
                     </View>
                     <View style={style.descripton} >
+                        <Text style={style.tapcount} >{kasiaTaps}</Text>
                         <Text style={style.tapcount} >{localShowKasiaTab.toString()}</Text>
 
                     </View>
@@ -120,8 +121,10 @@ const style = StyleSheet.create({
     },
     logo: {
         width: 60,
-        backgroundColor: "pink",
+        backgroundColor: "grey",
         borderRadius: 20,
+        justifyContent: "center",
+        alignItems: "center",
     },
     descripton: {
         flex: 1,
