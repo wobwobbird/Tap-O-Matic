@@ -2,34 +2,59 @@ import { View, Text, StyleSheet, ScrollView, Pressable } from "react-native";
 import screenStyles from "src/styles/screenStyles";
 import { Ionicons } from '@expo/vector-icons';
 import { useState } from 'react';
-import { useRoute } from '@react-navigation/native';
+import { useStateContext } from 'src/context/StateContext';
 
 export default function HomeScreen() {
 
     const [kasiaTaps, setKasiaTaps] = useState(0);
     const [localShowKasiaTab, setLocalShowKasiaTab] = useState(false);
+    const { setShowKasiaTab } = useStateContext();
 
-    const route = useRoute();
-    const { setShowKasiaTab } = route.params as { setShowKasiaTab: (value: boolean) => void };
     
-    const robot = () => {
+    
+    const robot = (key: number) => {
         return (
-            <Ionicons name="logo-ionitron" size={50} color="#007AFF" style={style.robot} />
+            <Ionicons 
+                key={key}
+                name="logo-ionitron"
+                size={50}
+                color="#007AFF"
+                style={style.robot}
+            />
         )
     }   
 
-    const robotArray = [robot(), robot(), robot(), robot(), robot(), robot(), robot(), robot()]
+    const robotArray = [robot(0), robot(1), robot(2), robot(3), robot(4), robot(5), robot(6), robot(7)]
 
     const handleSelectionBoxPress = () => {
         setKasiaTaps(prev => {
             const newValue = prev + 1;
             if (newValue >= 5) {
-                setShowKasiaTab(true);
-                setLocalShowKasiaTab(true);
+                // setLocalShowKasiaTab(true);
+                setShowKasiaTab(true)
             }
             return newValue;
         });
     }
+
+    // const selectionBox = (click: any, icon: number) => {
+    //     return (
+    //         <Pressable 
+    //             style={style.selectionBox}
+    //             onPress={() => click}
+    //         >
+    //             <View style={style.logo} >
+    //                 <Ionicons name={icon} size={50} color="#007AFF" />
+                    
+    //             </View>
+    //             <View style={style.descripton} >
+    //                 <Text style={style.tapcount} >{kasiaTaps}</Text>
+    //                 <Text style={style.tapcount} >{localShowKasiaTab.toString()}</Text>
+    //             </View>
+
+    //         </Pressable>
+    //     )
+    // }
 
     return (
         <View style={screenStyles.container} >
@@ -37,9 +62,6 @@ export default function HomeScreen() {
             <ScrollView>
                 <View style={style.robotHolder} >{robotArray}</View>
                 <View style={style.title} >
-                    {/* <Text
-                        style={style.titleText}
-                    >Welcome to</Text> */}
                     <Text
                         style={style.titleText}
                     >Tap 'O' Matic</Text>
@@ -58,7 +80,6 @@ export default function HomeScreen() {
                     <View style={style.descripton} >
                         <Text style={style.tapcount} >{kasiaTaps}</Text>
                         <Text style={style.tapcount} >{localShowKasiaTab.toString()}</Text>
-
                     </View>
 
                 </Pressable>)}
