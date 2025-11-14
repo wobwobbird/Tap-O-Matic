@@ -5,6 +5,9 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from 'src/components/screens/HomeScreen';
 import KasiaScreen from 'src/components/screens/KasiaScreen';
 import Ran1 from 'src/components/screens/Ran1';
+import Ran2 from 'src/components/screens/Ran2';
+import Ran3 from 'src/components/screens/Ran3';
+import Ran4 from 'src/components/screens/Ran4';
 import { Ionicons } from '@expo/vector-icons';
 import StateProvider from 'src/context/StateContext';
 
@@ -33,6 +36,36 @@ export default function App() {
               tabBarLabel: 'Ran1',
               tabBarIcon: () => (
                 <Ionicons name="aperture-outline" size={24} color="#007AFF" />
+              )
+            }}
+          />
+          <Tab.Screen 
+            name="Ran2"
+            component={Ran2}
+            options={{ 
+              tabBarLabel: 'Ran2',
+              tabBarIcon: () => (
+                <Ionicons name="american-football-outline" size={24} color="#007AFF" />
+              )
+            }}
+          />
+          <Tab.Screen 
+            name="Ran3"
+            component={Ran3}
+            options={{ 
+              tabBarLabel: 'Ran3',
+              tabBarIcon: () => (
+                <Ionicons name="barbell-outline" size={24} color="#007AFF" />
+              )
+            }}
+          />
+          <Tab.Screen 
+            name="Ran4"
+            component={Ran4}
+            options={{ 
+              tabBarLabel: 'Ran4',
+              tabBarIcon: () => (
+                <Ionicons name="cash-outline" size={24} color="#007AFF" />
               )
             }}
           />

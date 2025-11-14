@@ -3,14 +3,13 @@ import screenStyles from "src/styles/screenStyles";
 import { Ionicons } from '@expo/vector-icons';
 import { useState } from 'react';
 import { useStateContext } from 'src/context/StateContext';
+import { useNavigation } from "@react-navigation/native";
 
 export default function HomeScreen() {
 
     const [kasiaTaps, setKasiaTaps] = useState(0);
-    const [localShowKasiaTab, setLocalShowKasiaTab] = useState(false);
     const { setShowKasiaTab } = useStateContext();
-
-    
+    const navigation = useNavigation<any>();
     
     const robot = (key: number) => {
         return (
@@ -30,11 +29,15 @@ export default function HomeScreen() {
         setKasiaTaps(prev => {
             const newValue = prev + 1;
             if (newValue >= 5) {
-                // setLocalShowKasiaTab(true);
                 setShowKasiaTab(true)
             }
             return newValue;
         });
+    }
+
+    const handleNavClick = (tab: any) => {
+        navigation.navigate(tab);
+        console.log("clicked");
     }
 
     // const selectionBox = (click: any, icon: number) => {
@@ -44,7 +47,7 @@ export default function HomeScreen() {
     //             onPress={() => click}
     //         >
     //             <View style={style.logo} >
-    //                 <Ionicons name={icon} size={50} color="#007AFF" />
+    //                 <Ionicons name={icon as any} size={50} color="#007AFF" />
                     
     //             </View>
     //             <View style={style.descripton} >
@@ -55,6 +58,25 @@ export default function HomeScreen() {
     //         </Pressable>
     //     )
     // }
+
+    const selectionBox = (click: any, clickLocation: any, icon: string) => {
+        return (
+            <Pressable 
+                style={style.selectionBox}
+                onPress={() => click(clickLocation)}
+            >
+                <View style={style.logo} >
+                    <Ionicons name={icon as any} size={50} color="#007AFF" />
+                    
+                </View>
+                <View style={style.descripton} >
+                    {/* <Text style={style.tapcount} >{kasiaTaps}</Text>
+                    <Text style={style.tapcount} >{localShowKasiaTab.toString()}</Text> */}
+                </View>
+
+            </Pressable>
+        )
+    }
 
     return (
         <View style={screenStyles.container} >
@@ -69,7 +91,11 @@ export default function HomeScreen() {
                 <View style={style.robotHolder} >{robotArray}</View>
                 {/* <Ionicons name="logo-ionitron" size={50} color="#007AFF" style={style.robot} /> */}
                 <Text style={style.genText} >This is a collection of random number generators</Text>
-                {!localShowKasiaTab && (<Pressable 
+                {selectionBox(handleNavClick, "Ran1", "aperture-outline" )}
+                {selectionBox(handleNavClick, "Ran2", "american-football-outline")}
+                {selectionBox(handleNavClick, "Ran3", "barbell-outline")}
+                {selectionBox(handleNavClick, "Ran4", "cash-outline")}
+                <Pressable 
                     style={style.selectionBox}
                     onPress={() => handleSelectionBoxPress()}
                 >
@@ -78,12 +104,11 @@ export default function HomeScreen() {
                         
                     </View>
                     <View style={style.descripton} >
-                        <Text style={style.tapcount} >{kasiaTaps}</Text>
-                        <Text style={style.tapcount} >{localShowKasiaTab.toString()}</Text>
+                        <Text style={style.tapcount} >{kasiaTaps === 0 ? "Tap?" : kasiaTaps}</Text>
                     </View>
 
-                </Pressable>)}
-                <View style={style.selectionBox} >
+                </Pressable>
+                {/* <View style={style.selectionBox} >
 
                 </View>
                 <View style={style.selectionBox} >
@@ -91,7 +116,7 @@ export default function HomeScreen() {
                 </View>
                 <View style={style.selectionBox} >
 
-                </View>
+                </View> */}
 
             </ScrollView>
 
@@ -102,9 +127,6 @@ export default function HomeScreen() {
 
 const style = StyleSheet.create({
     title: {
-        // marginTop: 50,
-        // marginBottom: 50,
-        // backgroundColor: 'yellow',
         backgroundColor: "#007AFF",
         paddingTop: 20,
         paddingBottom: 20,
@@ -139,6 +161,15 @@ const style = StyleSheet.create({
         height: 80,
         borderRadius: 20,
         flexDirection: "row",
+        // box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); 
+        // iOS shadow
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 1 },
+        shadowOpacity: 0.05,
+        shadowRadius: 2,
+        // Android shadow
+        elevation: 2,
+
     },
     logo: {
         width: 60,
@@ -155,8 +186,6 @@ const style = StyleSheet.create({
     tapcount: {
         textAlign: 'center',
         textAlignVertical: "center",
-        // height: "auto",
-        // width: "auto",
         fontSize: 30,
 
     }
