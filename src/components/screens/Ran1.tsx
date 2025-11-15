@@ -243,7 +243,7 @@ export default function Ran1() {
                             maximumValue={70}
                             step={1}
                             value={p1Points}
-                            minimumTrackTintColor="#673845"
+                            minimumTrackTintColor='rgba(27, 234, 253, 0.83)'
                             maximumTrackTintColor="#000000"
                         
                         />
@@ -254,7 +254,7 @@ export default function Ran1() {
                             maximumValue={70}
                             step={1}
                             value={p2Points}
-                            minimumTrackTintColor="#673845"
+                            minimumTrackTintColor='rgba(27, 234, 253, 0.83)'
                             maximumTrackTintColor="#000000"
                         
                         />
@@ -297,7 +297,7 @@ const style = StyleSheet.create({
     howTo: {
         borderRadius: 8,
         borderWidth: 2,
-        borderColor: "grey",
+        borderColor: 'rgba(0, 0, 0, 0.29)',
         gap: 5,
         padding: 5,
 
@@ -348,7 +348,7 @@ const style = StyleSheet.create({
 
     },
     button: {
-        backgroundColor: "#673845",
+        backgroundColor: 'rgba(27, 234, 253, 0.64)',
         height: 40,
         width: 300,
         borderRadius: 15,

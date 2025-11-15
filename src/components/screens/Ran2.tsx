@@ -88,13 +88,13 @@ export default function Ran2() {
             </View>
             <View style={style.coinSelection}>
                 <Pressable
-                    style={[style.coin, selectedCoin === "Heads" && { backgroundColor: 'rgba(99, 119, 96, 0.75)' }]}
+                    style={[style.coin, selectedCoin === "Heads" && { backgroundColor: 'rgba(38, 217, 10, 0.96)' }]}
                     onPress={() => isCoinSelected === false && selectHeads()}
                 >
                     <Text style={style.coinText}>Heads</Text>
                 </Pressable>
                 <Pressable
-                    style={[style.coin, selectedCoin === "Tails" && { backgroundColor: 'rgba(99, 119, 96, 0.75)' }]}
+                    style={[style.coin, selectedCoin === "Tails" && { backgroundColor: 'rgba(38, 217, 10, 0.96)' }]}
                     onPress={() => isCoinSelected === false && selectTails()}
                 >
                     <Text style={style.coinText}>Tails</Text>
@@ -160,7 +160,7 @@ const style = StyleSheet.create({
     pageContainer: {
         flex: 1,
         padding: 10,
-        gap: 10,
+        gap: 20,
     },
     title: {
         fontSize: 20,
@@ -171,7 +171,7 @@ const style = StyleSheet.create({
     howTo: {
         borderRadius: 8,
         borderWidth: 2,
-        borderColor: "grey",
+        borderColor: 'rgba(0, 0, 0, 0.24)',
         gap: 5,
         padding: 5,
 
@@ -198,22 +198,25 @@ const style = StyleSheet.create({
         width: 140,
         borderRadius: 100,
         borderWidth: 2,
-        borderColor: 'rgba(99, 119, 96, 1)',
+        borderColor: 'rgb(25, 187, 0)',
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: 'rgba(99, 119, 96, 0.5)',
+        backgroundColor: 'rgba(38, 217, 10, 0.5)',
     },
     coinText: {
         fontSize: 40,
     },
     button: {
-        backgroundColor: "#673845",
+        backgroundColor: 'rgba(47, 255, 15, 0.5)',
         height: 40,
         width: 300,
         borderRadius: 15,
         justifyContent: "center",
         alignItems: "center",
         marginHorizontal: "auto",
+        borderWidth: 2,
+        borderColor: 'rgb(25, 187, 0)',
+
     },
     
     flipCoinWrapper: {
@@ -232,10 +235,10 @@ const style = StyleSheet.create({
         width: 198,
         borderRadius: 100,
         borderWidth: 2,
-        borderColor: 'rgba(99, 119, 96, 1)',
+        borderColor: 'rgba(25, 187, 0))',
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: 'rgba(99, 119, 96, 0.5)',
+        backgroundColor: 'rgba(38, 217, 10, 0.96)',
     },
     resultTextContainer: {
         marginTop: 20,

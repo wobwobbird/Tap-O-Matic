@@ -44,8 +44,8 @@ export default function HomeScreen() {
     const boxDescriptions = [
         "Choose a random number between 1 and 9",
         "Coin flip",
-        "ran3Text",
-        "ran4Text",
+        "Under Construction...",
+        "Under Construction...",
         "ran5Text",
     ]
     const boxColour = [
@@ -100,7 +100,9 @@ export default function HomeScreen() {
     return (
         <View style={screenStyles.container} >
             
-            <ScrollView>
+            <ScrollView
+                showsVerticalScrollIndicator={false}
+            >
                 <View style={style.robotHolder} >{robotArray}</View>
                 <View style={style.title} >
                     <Text
