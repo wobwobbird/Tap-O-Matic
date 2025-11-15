@@ -377,6 +377,7 @@ const style = StyleSheet.create({
         // marginHorizontal: 10,
         gap: 10,
         // backgroundColor: "green",
+        textAlign: "center",
     }
 })
 

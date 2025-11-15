@@ -43,7 +43,7 @@ export default function HomeScreen() {
 
     const boxDescriptions = [
         "Choose a random number between 1 and 9",
-        "ran2Textran2Textran2Textran2Textran2Textddedf",
+        "Coin flip",
         "ran3Text",
         "ran4Text",
         "ran5Text",
@@ -110,7 +110,7 @@ export default function HomeScreen() {
                 <View style={style.robotHolder} >{robotArray}</View>
                 <Text style={style.genText} >A collection of random number generators</Text>
                 {selectionBox(handleNavClick, "1-9", "aperture-outline", boxDescriptions[0], boxColour[0] )}
-                {selectionBox(handleNavClick, "Ran2", "american-football-outline", boxDescriptions[1], boxColour[1]  )}
+                {selectionBox(handleNavClick, "Coin", "logo-bitcoin", boxDescriptions[1], boxColour[1]  )}
                 {selectionBox(handleNavClick, "Ran3", "barbell-outline", boxDescriptions[2], boxColour[2]  )}
                 {selectionBox(handleNavClick, "Ran4", "cash-outline", boxDescriptions[3], boxColour[3] )}
                 <LinearGradient colors={['#fbc2eb', '#a6c1ee']} style={style.outerSelectionBox} >

@@ -40,12 +40,12 @@ export default function App() {
             }}
           />
           <Tab.Screen 
-            name="Ran2"
+            name="Coin"
             component={Ran2}
             options={{ 
-              tabBarLabel: 'Ran2',
+              tabBarLabel: 'Coin',
               tabBarIcon: () => (
-                <Ionicons name="american-football-outline" size={24} color="#007AFF" />
+                <Ionicons name="logo-bitcoin" size={24} color="#007AFF" />
               )
             }}
           />
