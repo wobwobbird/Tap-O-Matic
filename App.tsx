@@ -11,6 +11,7 @@ import Ran4 from 'src/components/screens/Ran4';
 import { Ionicons } from '@expo/vector-icons';
 import StateProvider from 'src/context/StateContext';
 
+
 const Tab = createBottomTabNavigator();
 
 export default function App() {

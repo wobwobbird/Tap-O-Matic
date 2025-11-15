@@ -20,7 +20,9 @@ export default function KasiaScreen() {
     return (
         <View style={screenStyles.container}>
             {!showKasiaTab ? (
-                <Text>Where are the taps?</Text>
+                <View style={styles.tapsContainer} >
+                    <Text style={styles.taps} >Where are the taps?</Text>
+                </View>
             ) : (
                 <FlatList
                     data={data}
@@ -65,7 +67,15 @@ const styles = StyleSheet.create({
         textAlign: "center",
 
       },
-      box: {
-    
+      tapsContainer: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center"
+      },
+      taps: {
+        fontSize: 30,
+        textAlign: "center",
+
+        // writingDirection: "rtl",
       },
 })

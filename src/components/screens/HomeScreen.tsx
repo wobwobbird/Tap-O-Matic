@@ -4,6 +4,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { useState } from 'react';
 import { useStateContext } from 'src/context/StateContext';
 import { useNavigation } from "@react-navigation/native";
+import { LinearGradient } from "expo-linear-gradient";
 
 export default function HomeScreen() {
 
@@ -62,19 +63,22 @@ export default function HomeScreen() {
     const selectionBox = (click: any, clickLocation: any, icon: string) => {
         return (
             <Pressable 
-                style={style.selectionBox}
-                onPress={() => click(clickLocation)}
+                    style={style.selectionBox}
+                    onPress={() => click(clickLocation)}
             >
-                <View style={style.logo} >
-                    <Ionicons name={icon as any} size={50} color="#007AFF" />
-                    
-                </View>
-                <View style={style.descripton} >
-                    {/* <Text style={style.tapcount} >{kasiaTaps}</Text>
-                    <Text style={style.tapcount} >{localShowKasiaTab.toString()}</Text> */}
-                </View>
+                {/* <LinearGradient colors={['#667eea', '#764ba2']} > */}
+                    <View style={style.logo} >
+                        <Ionicons name={icon as any} size={50} color="#007AFF" />
+                        
+                    </View>
+                    <View style={style.descripton} >
+                        {/* <Text style={style.tapcount} >{kasiaTaps}</Text>
+                        <Text style={style.tapcount} >{localShowKasiaTab.toString()}</Text> */}
+                    </View>
 
+                {/* </LinearGradient> */}
             </Pressable>
+
         )
     }
 
@@ -104,7 +108,7 @@ export default function HomeScreen() {
                         
                     </View>
                     <View style={style.descripton} >
-                        <Text style={style.tapcount} >{kasiaTaps === 0 ? "Tap?" : kasiaTaps}</Text>
+                        <Text style={style.tapcount} >{kasiaTaps === 0 ? "Tap ;)" : kasiaTaps}</Text>
                     </View>
 
                 </Pressable>
@@ -156,6 +160,7 @@ const style = StyleSheet.create({
     },
     selectionBox: {
         backgroundColor: "grey",
+        // backgroundColor: "white",
         marginVertical: 10,
         marginHorizontal: 20,
         height: 80,
@@ -163,31 +168,44 @@ const style = StyleSheet.create({
         flexDirection: "row",
         // box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); 
         // iOS shadow
+        borderWidth: 5,
+        // outlineColor: "green,"
+        // borderBottomWidth: 5,
+        // iOS shadow
         shadowColor: '#000',
-        shadowOffset: { width: 0, height: 1 },
-        shadowOpacity: 0.05,
-        shadowRadius: 2,
+        // shadowOffset: { width: 10, height: -3 },
+        shadowOpacity: 0.25,
+        shadowRadius: 5,
         // Android shadow
-        elevation: 2,
+        elevation: 5,
+      
+
+        // shadowColor: '#010',
+        // shadowOffset: { width: 0, height: 1 },
+        // shadowOpacity: 0.05,
+        // shadowRadius: 2,
+        // // Android shadow
+        // elevation: 2,
 
     },
     logo: {
         width: 60,
-        backgroundColor: "grey",
+        // backgroundColor: "grey",
         borderRadius: 20,
         justifyContent: "center",
         alignItems: "center",
     },
     descripton: {
         flex: 1,
-        backgroundColor: "blue",
+        // backgroundColor: "blue",
         borderRadius: 20,
+        justifyContent: "center",
+        alignItems: "center"
+
     },
     tapcount: {
         textAlign: 'center',
-        textAlignVertical: "center",
         fontSize: 30,
 
     }
 })
-
