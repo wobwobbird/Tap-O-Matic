@@ -22,17 +22,6 @@ export default function Ran1() {
     const [gamesPlayed, setGamesPlayed] = useState(0);
     const [gamePlaying, setGamePlaying] = useState(false);
 
-
-
-
-
-
-
-
-
-
-
-
     const generateNumber = async (p1: number, p2: number) => {
         const p1Num = Number(p1); // Ensure it's a number
         const p2Num = Number(p2); // Ensure it's a number

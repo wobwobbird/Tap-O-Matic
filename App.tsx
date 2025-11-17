@@ -30,7 +30,7 @@ export default function App() {
             }}
             />
           <Tab.Screen 
-            name="Ran1"
+            name="1-9"
             component={Ran1}
             options={{ 
               tabBarLabel: '1-9',
@@ -50,10 +50,10 @@ export default function App() {
             }}
           />
           <Tab.Screen 
-            name="Ran3"
+            name="21"
             component={Ran3}
             options={{ 
-              tabBarLabel: 'Ran3',
+              tabBarLabel: '21',
               tabBarIcon: () => (
                 <Ionicons name="barbell-outline" size={24} color="#007AFF" />
               )

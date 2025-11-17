@@ -44,7 +44,7 @@ export default function HomeScreen() {
     const boxDescriptions = [
         "Choose a random number between 1 and 9",
         "Coin flip",
-        "Under Construction...",
+        "Closest to 21",
         "Under Construction...",
         "ran5Text",
     ]
@@ -113,7 +113,7 @@ export default function HomeScreen() {
                 <Text style={style.genText} >A collection of random number generators</Text>
                 {selectionBox(handleNavClick, "1-9", "aperture-outline", boxDescriptions[0], boxColour[0] )}
                 {selectionBox(handleNavClick, "Coin", "logo-bitcoin", boxDescriptions[1], boxColour[1]  )}
-                {selectionBox(handleNavClick, "Ran3", "barbell-outline", boxDescriptions[2], boxColour[2]  )}
+                {selectionBox(handleNavClick, "21", "barbell-outline", boxDescriptions[2], boxColour[2]  )}
                 {selectionBox(handleNavClick, "Ran4", "cash-outline", boxDescriptions[3], boxColour[3] )}
                 <LinearGradient colors={['#fbc2eb', '#a6c1ee']} style={style.outerSelectionBox} >
                     <Pressable 
