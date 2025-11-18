@@ -44,12 +44,11 @@ export default function Ran1() {
             }
             
             localGamesPlayed++;
-            setGamesPlayed(localGamesPlayed);
-            
-            console.log("P1 Points", localP1Points);
-            console.log("P2 Points", localP2Points);
-            console.log("Random number:", num);
-            console.log("Games played: ", localGamesPlayed);
+            setGamesPlayed(localGamesPlayed);            
+            // console.log("P1 Points", localP1Points);
+            // console.log("P2 Points", localP2Points);
+            // console.log("Random number:", num);
+            // console.log("Games played: ", localGamesPlayed);
             await new Promise(resolve => setTimeout(resolve, 10));
             
         } while (localP1Points + localP2Points < 100);

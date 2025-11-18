@@ -54,11 +54,11 @@ export default function Ran2() {
         setWinnerName('');
     }
 
-    const generateNumber = async () => {
+    const generateNumber = async (time: number) => {
         let num = await new Promise<number>((resolve) => {
             setTimeout(() => {
                 resolve(Math.floor(Math.random() * 9) + 1);
-            }, 3); //300
+            }, time); //300
         });
         return num;
     }
@@ -93,15 +93,15 @@ export default function Ran2() {
 
             finalNumber = Math.floor(Math.random() * 9) + 1;
             setP1RandomNumber(finalNumber);
-            finalNumber = await generateNumber();
+            finalNumber = await generateNumber(300);
             setP1RandomNumber(finalNumber);
-            finalNumber = await generateNumber();
+            finalNumber = await generateNumber(350);
             setP1RandomNumber(finalNumber);
-            finalNumber = await generateNumber();
+            finalNumber = await generateNumber(300);
             setP1RandomNumber(finalNumber);
-            finalNumber = await generateNumber();
+            finalNumber = await generateNumber(300);
             setP1RandomNumber(finalNumber);
-            finalNumber = await generateNumber();
+            finalNumber = await generateNumber(500);
             setP1RandomNumber(finalNumber);
 
             const newScore = p1Score + finalNumber;
@@ -124,15 +124,15 @@ export default function Ran2() {
             
             finalNumber = Math.floor(Math.random() * 9) + 1;
             setP2RandomNumber(finalNumber);
-            finalNumber = await generateNumber();
+            finalNumber = await generateNumber(300);
             setP2RandomNumber(finalNumber);
-            finalNumber = await generateNumber();
+            finalNumber = await generateNumber(350);
             setP2RandomNumber(finalNumber);
-            finalNumber = await generateNumber();
+            finalNumber = await generateNumber(250);
             setP2RandomNumber(finalNumber);
-            finalNumber = await generateNumber();
+            finalNumber = await generateNumber(300);
             setP2RandomNumber(finalNumber);
-            finalNumber = await generateNumber();
+            finalNumber = await generateNumber(500);
             setP2RandomNumber(finalNumber);
 
             const newScore = p2Score + finalNumber;
@@ -252,7 +252,6 @@ export default function Ran2() {
                                 </Pressable>
                                 <Pressable
                                     style={[style.gameRow4Button, p2TurnTaken && {backgroundColor: "pink"}]}
-                                    // onPress={() => takeTurn(2)}
                                     onPress={() => !p2TurnTaken && takeTurn(2)}
                                 >
                                     <Text style={style.gameRow4Text}>{p2SelectedIndex === 0 ? "Click to roll" : "Click to pass"}</Text>
