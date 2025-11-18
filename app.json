@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Tap_O_Fate",
-    "slug": "Tap_O_Fate",
+    "name": "Tap 'O' Matic",
+    "slug": "tap-o-matic",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/TapOMatic.png",
