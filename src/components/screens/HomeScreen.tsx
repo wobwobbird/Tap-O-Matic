@@ -65,20 +65,20 @@ export default function HomeScreen() {
 
     const selectionBox = (click: any, clickLocation: any, icon: string, descriptionTitle: string, descriptonText: string, theBoxColour: any) => {
         return (
-            <LinearGradient colors={[theBoxColour[0], theBoxColour[1]]} style={style.outerSelectionBox} >
-                <Pressable 
-                        style={style.selectionBox}
+            <Pressable 
+                        style={style.outerSelectionBox}
                         onPress={() => click(clickLocation)}
-                >
+            >
+                <LinearGradient colors={[theBoxColour[0], theBoxColour[1]]} style={style.selectionBox} >
                         <View style={style.logo} >
-                            <Ionicons name={icon as any} size={40} color="#ffffff" />
+                            <Ionicons name={icon as any} size={40} color="rgb(0, 0, 0)" />
                         </View>
                         <View style={style.descripton} >
                             <Text style={style.descriptionBoxTitle}>{descriptionTitle}</Text>
                             <Text style={style.descriptionBoxText} >{descriptonText}</Text>
                         </View>
-                </Pressable>
-            </LinearGradient>
+                </LinearGradient>
+            </Pressable>
         )
     }
 
@@ -100,22 +100,22 @@ export default function HomeScreen() {
                 {selectionBox(handleNavClick, "Closest To 31", "push-outline", boxNames[1], boxDescriptions[2], boxColour[2]  )}
                 {selectionBox(handleNavClick, "Coin Flip", "logo-bitcoin", boxNames[2], boxDescriptions[1], boxColour[1]  )}
                 {selectionBox(handleNavClick, "The Selector", "cash-outline", boxNames[3], boxDescriptions[3], boxColour[3] )}
-                <LinearGradient colors={['#fbc2eb', '#a6c1ee']} style={style.outerSelectionBox} >
-                    <Pressable 
-                        style={style.selectionBox}
-                        onPress={() => handleSelectionBoxPress()}
-                    >
+                <Pressable 
+                    style={style.outerSelectionBox}
+                    onPress={() => handleSelectionBoxPress()}
+                >
+                    <LinearGradient colors={['#fbc2eb', '#a6c1ee']} style={style.selectionBox} >
                         <View style={style.logo} >
-                            <Ionicons name="people-circle-outline" size={50} color="#FFFFFF" />
-                            
+                            <Ionicons name="people-circle-outline" size={50} color="rgb(0, 0, 0)" />
                         </View>
                         <View style={style.descripton} >
-                            <Text style={style.descriptionBoxText} >{kasiaTaps === 0 ? "Tap ;)" : kasiaTaps}</Text>
+                            <Text style={style.descriptionBoxTitle}>{boxNames[4]}</Text>
+                            <Text style={style.descriptionBoxText} >{kasiaTaps === 0 ? boxDescriptions[4] : kasiaTaps}</Text>
                         </View>
 
-                    </Pressable>
+                    </LinearGradient>
+                </Pressable>
 
-                </LinearGradient>
             </ScrollView>
         </View>
     )
@@ -136,6 +136,7 @@ const style = StyleSheet.create({
     genText: {
         fontSize: 30,
         textAlign: 'center',
+        fontWeight: 400,
         backgroundColor: "#007AFF",
         color: 'white',
         paddingTop: 20,
@@ -161,13 +162,20 @@ const style = StyleSheet.create({
         borderWidth: 0,
     
         // iOS shadow
-        shadowColor: '#000',
-        // shadowOffset: { width: 10, height: -3 },
+        // shadowColor: '#000',
+        // // shadowOffset: { width: 10, height: -3 },
+        // shadowOpacity: 0.25,
+        // shadowRadius: 5,
+        // // Android shadow
+        // elevation: 5,
+
+        // iOS shadow
+        shadowColor: "rgb(0, 0, 0)",
+        shadowOffset: { width: 5, height: 5 },
         shadowOpacity: 0.25,
         shadowRadius: 5,
         // Android shadow
         elevation: 5,
-
     },
     selectionBox: {
         // backgroundColor: "grey",
@@ -175,19 +183,12 @@ const style = StyleSheet.create({
         // marginVertical: 10,
         // marginHorizontal: 20,
         // height: 80,
-        // borderRadius: 20,
+        borderRadius: 20,
         height: "100%",
         width: "100%",
         flexDirection: "row",
         // borderWidth: 5,
 
-        // // iOS shadow
-        // shadowColor: '#000',
-        // // shadowOffset: { width: 10, height: -3 },
-        // shadowOpacity: 0.25,
-        // shadowRadius: 5,
-        // // Android shadow
-        // elevation: 5,
 
     },
     logo: {
@@ -210,18 +211,20 @@ const style = StyleSheet.create({
     descriptionBoxTitle: {
         fontSize: 20,
         fontWeight: 600,
-        color: "white",
-        textShadowColor: "rgba(0, 0, 0, 1)",
-        textShadowOffset: { width: 1, height: 1 },
+        // color: "white",
+        color: "black",
+        // textShadowColor: "rgba(0, 0, 0, 1)",
+        // textShadowOffset: { width: 1, height: 1 },
         textShadowRadius: 2,
     },
     descriptionBoxText: {
         fontSize: 18,
         fontWeight: 400,
-        color: "white",
+        // color: "white",
+        color: "black",
         textAlign: "center",
-        textShadowColor: "rgba(0, 0, 0, 1)",
-        textShadowOffset: { width: 1, height: 1 },
-        textShadowRadius: 2,
+        // textShadowColor: "rgba(0, 0, 0, 1)",
+        // textShadowOffset: { width: 1, height: 1 },
+        // textShadowRadius: 2,
     }
 })
