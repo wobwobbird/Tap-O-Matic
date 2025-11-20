@@ -187,7 +187,7 @@ const style = StyleSheet.create({
     },
     descriptionBoxTitle: {
         fontSize: 20,
-        fontWeight: 600,
+        fontWeight: 800,
         color: "rgba(0, 0, 0, 0.8)",
         textShadowRadius: 2,
     },
