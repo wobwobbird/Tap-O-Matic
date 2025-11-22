@@ -1,14 +1,14 @@
-import { ScrollView, Text } from "react-native"
 import { LinearGradient } from "expo-linear-gradient";
-import { StyleSheet, TextInput, View, Pressable, Image } from "react-native";
+import { StyleSheet, TextInput, View, Pressable, Image, ScrollView, Text } from "react-native";
 import { useState, useEffect } from "react";
 import { Ionicons } from '@expo/vector-icons';
 import Slider from '@react-native-community/slider';
+import { Keyboard } from 'react-native';
 
 export default function TheSelector() {
     const [currentInput, setCurrentInput] = useState('');
     const [players, setPlayers] = useState<Array<{ name: string; number: string }>>([ { name: '', number: ''}]); // players[index].number
-    const [sliderNumber, setSliderNumber] = useState(90);
+    const [sliderNumber, setSliderNumber] = useState(10);
     const [saveCheckAllowed, setSaveCheckAllowed] = useState(false);
     const [namesSaved, setNamesSaved] = useState(false);
     const [randomNumber, setRandomNumber] = useState(0);
@@ -17,8 +17,6 @@ export default function TheSelector() {
     const [winnerName, setWinnerName] = useState('');
     const [gameIsThinking, setGameIsThinking] = useState(false);
     const [highlightNumber, setHighlightNumber] = useState(5);
-
-    // setHighlightNumber(1);
 
     const resetGame = () => {
         setCurrentInput('');
@@ -85,11 +83,13 @@ export default function TheSelector() {
                     style={style.nameInputNumber}
                     placeholder="Number"
                     onChangeText={(text) => {
+                        const numericValue = text.replace(/[^0-9]/g, '');
                         const updatedPlayers = [...players];
-                        updatedPlayers[index] = { ...updatedPlayers[index], number: text};
+                        updatedPlayers[index] = { ...updatedPlayers[index], number: numericValue};
                         setPlayers(updatedPlayers);
                     }}
                     value={players[index]?.number || ""}
+                    keyboardType="numeric"
                 ></TextInput>
             </View>
         )
@@ -150,10 +150,6 @@ export default function TheSelector() {
         setGameIsThinking(false);
     }
 
-    // useEffect(() => {
-    //     numberRangeDisplay();
-    // }, [sliderNumber])
-
     const numberRangeDisplay = () => {
         return Array.from( {length: sliderNumber }, (_, index) => {
             const player = players[index];
@@ -211,7 +207,7 @@ export default function TheSelector() {
                             <Text>{`Select a number to play between${sliderNumber === 0 ? '' : `: 1-${sliderNumber}`}`}</Text>
                             <Slider
                                 minimumValue={0}
-                                maximumValue={20}
+                                maximumValue={100}
                                 minimumTrackTintColor='rgba(0, 148, 32, 0.83)'
                                 onValueChange={setSliderNumber}
                                 value={sliderNumber}
@@ -241,27 +237,11 @@ export default function TheSelector() {
                                     </Pressable>
                                 )}
                             </View>
-
-
-                            <View style={ {gap: 5} }>
-                                <Text style={style.rangeText}>{`Number range: 1-${sliderNumber}`}</Text>
-                                <View style={style.numberRange}>
-                                    {numberRangeDisplay()}                                
-                                </View>
-                            </View>
-
-
-
                             
-                            <Pressable // TODO: add disabled={!saveCheckAllowed}
+                            <Pressable 
                                 onPress={saveCheckAllowed ? () => setNamesSaved(true) : undefined}
                             >
                                 <Text style={[style.nameSaveButton, saveCheckAllowed && {backgroundColor: 'rgba(0, 148, 32, 0.83)' }]}>Save & Continue</Text>
-                            </Pressable>
-                            <Pressable // TODO: add disabled={!saveCheckAllowed}
-                                onPress={() => setHighlightNumber(highlightNumber + 1)}
-                            >
-                                <Text style={[style.nameSaveButton]}>Add extra number</Text>
                             </Pressable>
                             <Text>{saveCheckAllowed}</Text>
                         </View>
