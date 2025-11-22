@@ -6,7 +6,7 @@ import HomeScreen from 'src/components/screens/HomeScreen';
 import KasiasScreen from 'src/components/screens/KasiasScreen';
 import BattleFor100 from 'src/components/screens/BattleFor100';
 import CoinFlip from 'src/components/screens/CoinFlip';
-import ClosestTo31 from 'src/components/screens/ClosestTo31';
+import ClosestTo21 from 'src/components/screens/ClosestTo21';
 import TheSelector from 'src/components/screens/TheSelector';
 import { Ionicons } from '@expo/vector-icons';
 import StateProvider from 'src/context/StateContext';
@@ -50,10 +50,10 @@ export default function App() {
             }}
           />
           <Tab.Screen 
-            name="Closest To 31"
-            component={ClosestTo31}
+            name="Closest To 21"
+            component={ClosestTo21}
             options={{ 
-              tabBarLabel: '31',
+              tabBarLabel: '21',
               tabBarIcon: () => (
                 <Ionicons name="push" size={24} color="#007AFF" />
               )

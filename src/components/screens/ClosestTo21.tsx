@@ -4,7 +4,7 @@ import { StyleSheet, TextInput, View, Pressable } from "react-native";
 import { useState, useEffect } from "react";
 import SegmentedControl from "react-native-segmented-control-2";
 
-export default function ClosestTo31() {
+export default function ClosestTo21() {
     const [p1Name, onChangeP1Name] = useState('');
     const [p2Name, onChangeP2Name] = useState('');
     const [playersNamed, setPlayersNamed] = useState(false);
@@ -55,12 +55,16 @@ export default function ClosestTo31() {
     }
     
     const calculateWinner = (score1: number, score2: number) => {
-        if (score1 > 31) {
+        if (score1 > 21) {
             setWinnerName(p2Name);
             return;
         }
-        if (score2 > 31) {
+        if (score2 > 21) {
             setWinnerName(p1Name);
+            return;
+        }
+        if (score1 === score2) {
+            setWinnerName(p1Name + " and " + p2Name);
             return;
         }
         if (score1 > score2) {
@@ -108,14 +112,14 @@ export default function ClosestTo31() {
             setP1Score(newScore);
             setP1TurnHappening(false);
             
-            if (newScore > 31) {
+            if (newScore > 21) {
                 calculateWinner(newScore, p2Score);
                 setGameOver(true);
             }
         }
 
         if (player === 2) {
-            if (p1SelectedIndex === 2) {
+            if (p2SelectedIndex === 1) {
                 setP2TurnTaken(true);
                 return;
             }
@@ -139,7 +143,7 @@ export default function ClosestTo31() {
             setP2Score(newScore);
             setP2TurnHappening(false);
             
-            if (newScore > 31) {
+            if (newScore > 21) {
                 setGameOver(true);
                 calculateWinner(p1Score, newScore);
             }
@@ -164,12 +168,12 @@ export default function ClosestTo31() {
             colors={['#ff9a56', '#ff6a88']}
             style={style.pageContainer}
         >
-            <Text style={style.title} >Closest To 31</Text>
+            <Text style={style.title} >Closest To 21</Text>
             <View style={style.howTo}>
-                <Text style={style.howToText}>The closest to 31 wins</Text>
+                <Text style={style.howToText}>The closest to 21 wins</Text>
                 <Text style={style.howToText}>When it's your turn, either go, or hold</Text>
                 <Text style={style.howToText}>If you go it generates a random number between 1-9, and adds it to your total</Text>
-                <Text style={style.howToText}>Go over 31, and you automatically lose</Text>
+                <Text style={style.howToText}>Go over 21, and you automatically lose</Text>
                 <Pressable>
                     <Text 
                         style={style.howToTextReset}
@@ -212,72 +216,67 @@ export default function ClosestTo31() {
                     </View>
                 </>
             )}
-            {playersNamed && (
+            {playersNamed && !gameOver && (
                 <View style={style.game}>
                     <View style={style.gameRow1}>
                         <Text style={style.gameRow1Text}>{p1Name}</Text>
                         <Text style={style.gameRow1Text}>{p2Name}</Text>
                     </View>
                     <View style={style.gameRow1}>
-                        <Text style={style.gameRow1Text}>{p1Score}</Text>
-                        <Text style={style.gameRow1Text}>{p2Score}</Text>
+                        <SegmentedControl
+                            tabs={["Roll", "Pass"]}
+                            style={style.gameRow3Button}
+                            onChange={(index: number) => !p1TurnTaken && setP1SelectedIndex(index)}
+                            value={p1SelectedIndex}
+                            activeTabColor="rgba(255, 154, 86, 1)"
+                            activeTextColor="rgb(255, 255, 255)"
+                        />
+                        <SegmentedControl
+                            tabs={["Roll", "Pass"]}
+                            style={style.gameRow3Button}
+                            onChange={(index: number) => !p2TurnTaken && setP2SelectedIndex(index)}
+                            value={p2SelectedIndex}
+                            activeTabColor="rgba(255, 154, 86, 1)"
+                            activeTextColor="rgb(255, 255, 255)"
+                        />
                     </View>
-                    
-                    {!gameOver && (
-                        <>
-                            <View style={style.gameRow1}>
-                                <SegmentedControl
-                                    tabs={["Roll", "Pass"]}
-                                    style={style.gameRow3Button}
-                                    onChange={(index: number) => !p1TurnTaken && setP1SelectedIndex(index)}
-                                    value={p1SelectedIndex}
-                                    activeTabColor="rgba(255, 154, 86, 1)"
-                                    activeTextColor="rgb(255, 255, 255)"
-                                />
-                                <SegmentedControl
-                                    tabs={["Roll", "Pass"]}
-                                    style={style.gameRow3Button}
-                                    onChange={(index: number) => !p2TurnTaken && setP2SelectedIndex(index)}
-                                    value={p2SelectedIndex}
-                                    activeTabColor="rgba(255, 154, 86, 1)"
-                                    activeTextColor="rgb(255, 255, 255)"
-                                />
-                            </View>
-                            <View style={style.gameRow1}>
-                                <Pressable
-                                    style={[style.gameRow4Button, p1TurnTaken && {backgroundColor: "pink"}]}
-                                    onPress={() => !p1TurnTaken && takeTurn(1)}
-                                >
-                                    <Text style={style.gameRow4Text}>{p1SelectedIndex === 0 ? "Click to roll" : "Click to pass"}</Text>
-                                </Pressable>
-                                <Pressable
-                                    style={[style.gameRow4Button, p2TurnTaken && {backgroundColor: "pink"}]}
-                                    onPress={() => !p2TurnTaken && takeTurn(2)}
-                                >
-                                    <Text style={style.gameRow4Text}>{p2SelectedIndex === 0 ? "Click to roll" : "Click to pass"}</Text>
-                                </Pressable>
-                            </View>
-                            <View style={style.gameRow1}>
-                                <Text style={style.gameRow1Text}>Rolled: {p1RandomNumber}</Text>
-                                <Text style={style.gameRow1Text}>Rolled: {p2RandomNumber}</Text>
-                            </View>        
-                            <View style={style.gameRow1}>
-                                <Pressable 
-                                    style={[style.gameRow6Button, p1TurnTaken && p2TurnTaken && !p1TurnHappening && !p2TurnHappening && { backgroundColor: 'rgba(246, 246, 5, 0.8)'}]}
-                                    onPress={() => !p1TurnHappening && !p2TurnHappening && handleNextTurn()}
-                                >
-                                    <Text style={style.gameRow5Text}>{(p1TurnTaken && p2TurnTaken && (p1SelectedIndex === 1) && (p2SelectedIndex === 1)) ? "End game" : "Next Turn"}</Text>
-                                </Pressable>
-                            </View>
-                        </>
-                    )}
+                    <View style={style.gameRow1}>
+                        <Pressable
+                            style={[style.gameRow4Button, p1TurnTaken && {backgroundColor: "pink"}]}
+                            onPress={() => !p1TurnTaken && takeTurn(1)}
+                        >
+                            <Text style={style.gameRow4Text}>{p1SelectedIndex === 0 ? "Click to roll" : "Click to pass"}</Text>
+                        </Pressable>
+                        <Pressable
+                            style={[style.gameRow4Button, p2TurnTaken && {backgroundColor: "pink"}]}
+                            onPress={() => !p2TurnTaken && takeTurn(2)}
+                        >
+                            <Text style={style.gameRow4Text}>{p2SelectedIndex === 0 ? "Click to roll" : "Click to pass"}</Text>
+                        </Pressable>
+                    </View>
+                    <View style={style.gameRow1}>
+                        <Text style={style.gameRow1Text}>Rolled: {p1RandomNumber}</Text>
+                        <Text style={style.gameRow1Text}>Rolled: {p2RandomNumber}</Text>
+                    </View>        
+                    <View style={style.gameRow1}>
+                        <Text style={style.gameRow1Text}>Score : {p1Score}</Text>
+                        <Text style={style.gameRow1Text}>Score : {p2Score}</Text>
+                    </View>
+                    <View style={style.gameRow1}>
+                        <Pressable 
+                            style={[style.gameRow6Button, p1TurnTaken && p2TurnTaken && !p1TurnHappening && !p2TurnHappening && { backgroundColor: 'rgba(246, 246, 5, 0.8)'}]}
+                            onPress={() => !p1TurnHappening && !p2TurnHappening && handleNextTurn()}
+                        >
+                            <Text style={style.gameRow5Text}>{(p1TurnTaken && p2TurnTaken && (p1SelectedIndex === 1) && (p2SelectedIndex === 1)) ? "End game" : "Next Turn"}</Text>
+                        </Pressable>
+                    </View>
                 </View>
             )}
             {gameOver && (
                 <>
                     <View style={style.scoreHolder}>
-                        <Text style={style.scoreText2}>Congratulations!</Text>
-                        <Text style={style.scoreText2} >{`${winnerName} is the Winner!!!`}</Text>
+                        <Text style={style.scoreText}>{p1Score === p2Score ? "So close" : "Congratulations!"}</Text>
+                        <Text style={style.scoreText} >{p1Score === p2Score ? `${winnerName}, its a tie!` : `${winnerName} is the Winner!!!`}</Text>
                     </View>
                     <View style={style.gameRow1}>
                         <Pressable 
@@ -408,11 +407,7 @@ const style = StyleSheet.create({
         gap: 10,
 
     },
-    scoreText1: {
-        fontSize: 20,
-        gap: 10,
-    },
-    scoreText2: {
+    scoreText: {
         fontSize: 20,
         fontWeight: 800,
         gap: 10,

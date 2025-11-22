@@ -44,7 +44,7 @@ export default function HomeScreen() {
     const boxNames = [
         "Battle For 100",
         "Coin Flip",
-        "Closest To 31",
+        "Closest To 21",
         "The Selector",
         "The Three Kasias"
     ]
@@ -99,7 +99,7 @@ export default function HomeScreen() {
                 <Text style={style.genText} >A collection of random number generators</Text>
                 {selectionBox(handleNavClick, "The Selector", "aperture", boxNames[3], boxDescriptions[3], boxColour[3] )}
                 {selectionBox(handleNavClick, "Battle For 100", "options-outline", boxNames[0], boxDescriptions[0], boxColour[0] )}
-                {selectionBox(handleNavClick, "Closest To 31", "push", boxNames[2], boxDescriptions[2], boxColour[2]  )}
+                {selectionBox(handleNavClick, "Closest To 21", "push", boxNames[2], boxDescriptions[2], boxColour[2]  )}
                 {selectionBox(handleNavClick, "Coin Flip", "logo-bitcoin", boxNames[1], boxDescriptions[1], boxColour[1]  )}
                 <Pressable 
                     style={style.outerSelectionBox}
