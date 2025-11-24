@@ -49,7 +49,7 @@ export default function BattleFor100() {
             });     
             localGamesPlayed++;
             setGamesPlayed(localGamesPlayed);            
-            console.log("Games played: ", localGamesPlayed);
+            // console.log("Games played: ", localGamesPlayed);
             await new Promise(resolve => setTimeout(resolve, 10));
             
         } while (!localPlayerPoints.some(points => points >= 50));
