@@ -7,7 +7,7 @@ import { Keyboard } from 'react-native';
 
 export default function TheSelector() {
     const [currentInput, setCurrentInput] = useState('');
-    const [players, setPlayers] = useState<Array<{ name: string; number: string }>>([ { name: '', number: ''}]); // players[index].number
+    const [players, setPlayers] = useState<Array<{ name: string; number: string }>>([ { name: '', number: ''}]);
     const [sliderNumber, setSliderNumber] = useState(10);
     const [saveCheckAllowed, setSaveCheckAllowed] = useState(false);
     const [namesSaved, setNamesSaved] = useState(false);
@@ -16,7 +16,6 @@ export default function TheSelector() {
     const [gameEnded, setGameEnded] = useState(false);
     const [winnerName, setWinnerName] = useState('');
     const [gameIsThinking, setGameIsThinking] = useState(false);
-    const [highlightNumber, setHighlightNumber] = useState(5);
 
     const resetGame = () => {
         setCurrentInput('');
@@ -155,32 +154,17 @@ export default function TheSelector() {
             const player = players[index];
             return (
                 <View key={index} style={
-                    [style.numberRangeIndividual,
-                    player && parseInt(player.number, 10) === index + 1 && { backgroundColor: "green" },
-                    // highlightNumber === (index + 1) && { backgroundColor: "green" },
-                    // parseInt(players[index]?.number || "0") === index && { backgroundColor: "green" },
-                    // highlightNumber === players.map(p => p.number) && { backgroundColor: "green" },
-
-
-
-                    // randomNumber === (index + 1) && { backgroundColor: "red" }]
-                    randomNumber === (index + 1) && { borderWidth: 5, borderColor: 'rgba(255, 23, 23, 0.82)' }]
-                    //         borderWidth: 5,
-                    // borderColor: 'rgba(255, 23, 23, 0.82)',
-
-                }
-                >
-                    {/* <Text>{index + 1}</Text> */}
-
-                </View>
+                    [
+                        style.numberRangeIndividual,
+                        // Check if ANY player's number matches this square
+                        players.some(p => parseInt(p.number, 10) === index + 1) && { backgroundColor: "green" },
+                        // Highlight the random number with red border
+                        randomNumber === (index + 1) && { borderWidth: 5, borderColor: 'rgba(255, 23, 23, 0.82)' }
+                    ]
+                }/>
             )
         });
     }
-
-    // const numberRangeDisplay = () => {
-    //     return (
-    //     )
-    // }
 
     return (
         <LinearGradient 
@@ -263,13 +247,6 @@ export default function TheSelector() {
                                     </View>
                                 ))}
                             </View>
-                            {/* <Pressable
-                                style={style.selectNumberButton}
-                                onPress={() => takeTurn()}
-                                disabled={gameEnded}
-                            >
-                                <Text>Select Number</Text>
-                            </Pressable> */}
                             <Pressable 
                                 style={[style.theRandomNumberHolder, randomNumberSelected && { backgroundColor: 'rgba(85, 228, 50, 0.83)'}]}
                                 onPress={!gameIsThinking ? () => takeTurn(): undefined}
@@ -284,8 +261,8 @@ export default function TheSelector() {
                     {gameEnded && (
                         <>
                             <View style={style.scoreHolder}>
-                                <Text style={style.scoreText2}>Congratulations!</Text>
-                                <Text style={style.scoreText2} >{`${winnerName} is the Winner!!!`}</Text>
+                                <Text style={style.scoreText}>Congratulations!</Text>
+                                <Text style={style.scoreText} >{`${winnerName} is the Winner!!!`}</Text>
                             </View>
                             <Pressable
                                 style={style.playAGainButton}
@@ -293,14 +270,6 @@ export default function TheSelector() {
                             >
                                 <Text>Play again?</Text>
                             </Pressable>
-                            {/* <View style={style.gameRow1}>
-                                <Pressable 
-                                    style={style.playAgainButton}
-                                    onPress={handlePlayAgain}
-                                >
-                                    <Text style={style.playAgainText}>Play again?</Text>
-                                </Pressable>
-                            </View> */}
                         </>
                     )}
                 </View>
@@ -337,10 +306,6 @@ const style = StyleSheet.create({
         fontSize: 18,
         fontWeight: 600,
     },
-    taps: {
-        fontSize: 30,
-        textAlign: "center",
-    },
     namePanel: {
         gap: 10,
     },
@@ -362,15 +327,6 @@ const style = StyleSheet.create({
         borderColor: 'rgba(0, 0, 0, 0.29)',
         padding: 10,
         width: 100,
-    },
-    nameInputSaveButton: {
-        width: 50,
-        height: 50,
-        borderRadius: 15,
-        borderWidth: 2,
-        borderColor: 'rgba(0, 0, 0, 0.29)',
-        justifyContent: "center",
-        alignItems: "center",
     },
     namePanelAddRemove: {
         flexDirection: "row",
@@ -403,7 +359,6 @@ const style = StyleSheet.create({
         flexWrap: 'wrap',
         gap: 10,
         justifyContent: "center",
-        
     },
     playerListIndividual: {
         backgroundColor: 'rgba(0, 0, 0, 0.1)',
@@ -412,7 +367,6 @@ const style = StyleSheet.create({
         padding: 8,
     },
     playerListIndividualText: {
-        // width: 120,
         textAlign: "center",
         alignSelf: 'center',
         fontSize: 15,
@@ -424,14 +378,11 @@ const style = StyleSheet.create({
         fontWeight: 600,
     },
     numberRange: {
-        // backgroundColor: 'rgba(45, 39, 216, 0.72)',
         height: 30,
         flexDirection: "row",
         gap: 5,
     },
     numberRangeIndividual: {
-        // width: "auto",
-        // backgroundColor: "pink",
         flex: 1,
         borderRadius: 8,
         borderWidth: 2,
@@ -457,11 +408,7 @@ const style = StyleSheet.create({
         gap: 10,
         marginTop: 10,
     },
-    scoreText1: {
-        fontSize: 20,
-        gap: 10,
-    },
-    scoreText2: {
+    scoreText: {
         fontSize: 20,
         fontWeight: 800,
         gap: 10,

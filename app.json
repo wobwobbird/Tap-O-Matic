@@ -2,7 +2,7 @@
   "expo": {
     "name": "Tap 'O' Matic",
     "slug": "tap-o-matic",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "orientation": "portrait",
     "icon": "./assets/TapOMatic.png",
     "userInterfaceStyle": "light",
