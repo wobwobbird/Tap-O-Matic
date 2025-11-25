@@ -10,13 +10,12 @@ Tap 'O' Matic is a fun, interactive mobile app that provides multiple mini-games
 
 ### Running on Your Smartphone
 
-1. **Install Expo Go** on your device:
-
+1. **Install Expo Go** on your device
 2. **Scan the QR code** below:
-![QR Code](path/to/your/qr-code.png)
 
-4. **The app will load** automatically in Expo Go - no development server needed!
+![QR Code](./assets/expo-go-qr-code-eas-update.svg)
 
+4. **The app will load** automatically in Expo Go
 
 ## ✨ Features
 
