@@ -216,7 +216,7 @@ export default function ClosestTo21() {
                     </View>
                 </>
             )}
-            {playersNamed && !gameOver && (
+            {playersNamed && (
                 <View style={style.game}>
                     <View style={style.gameRow1}>
                         <Text style={style.gameRow1Text}>{p1Name}</Text>
@@ -244,14 +244,19 @@ export default function ClosestTo21() {
                         <Pressable
                             style={[style.gameRow4Button, p1TurnTaken && {backgroundColor: "pink"}]}
                             onPress={() => !p1TurnTaken && takeTurn(1)}
+                            disabled={gameOver}
                         >
-                            <Text style={style.gameRow4Text}>{p1SelectedIndex === 0 ? "Click to roll" : "Click to pass"}</Text>
+                            <Text 
+                                style={style.gameRow4Text}
+                            >{p1SelectedIndex === 0 ? "Click to roll" : "Click to pass"}</Text>
                         </Pressable>
                         <Pressable
                             style={[style.gameRow4Button, p2TurnTaken && {backgroundColor: "pink"}]}
                             onPress={() => !p2TurnTaken && takeTurn(2)}
                         >
-                            <Text style={style.gameRow4Text}>{p2SelectedIndex === 0 ? "Click to roll" : "Click to pass"}</Text>
+                            <Text 
+                                style={style.gameRow4Text}
+                            >{p2SelectedIndex === 0 ? "Click to roll" : "Click to pass"}</Text>
                         </Pressable>
                     </View>
                     <View style={style.gameRow1}>
@@ -264,10 +269,13 @@ export default function ClosestTo21() {
                     </View>
                     <View style={style.gameRow1}>
                         <Pressable 
-                            style={[style.gameRow6Button, p1TurnTaken && p2TurnTaken && !p1TurnHappening && !p2TurnHappening && { backgroundColor: 'rgba(246, 246, 5, 0.8)'}]}
+                            style={[style.gameRow6Button, p1TurnTaken && p2TurnTaken && !p1TurnHappening && !p2TurnHappening && !gameOver && { backgroundColor: 'rgba(246, 246, 5, 0.8)'}]}
                             onPress={() => !p1TurnHappening && !p2TurnHappening && handleNextTurn()}
+                            disabled={gameOver}
                         >
-                            <Text style={style.gameRow5Text}>{(p1TurnTaken && p2TurnTaken && (p1SelectedIndex === 1) && (p2SelectedIndex === 1)) ? "End game" : "Next Turn"}</Text>
+                            <Text 
+                                style={style.gameRow5Text}
+                            >{(p1TurnTaken && p2TurnTaken && (p1SelectedIndex === 1) && (p2SelectedIndex === 1)) ? "End game" : "Next Turn"}</Text>
                         </Pressable>
                     </View>
                 </View>
