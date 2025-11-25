@@ -13,7 +13,9 @@ Tap 'O' Matic is a fun, interactive mobile app that provides multiple mini-games
 1. **Install Expo Go** on your device
 2. **Scan the QR code** below:
 
-![QR Code](./assets/expo-go-qr-code-eas-update.svg)
+<div align="center">
+  <img src="./assets/expo-go-qr-code-eas-update.svg" width="400" height="400" alt="QR Code" />
+</div>
 
 4. **The app will load** automatically in Expo Go
 
@@ -61,7 +63,22 @@ Tap 'O' Matic is a fun, interactive mobile app that provides multiple mini-games
 
 ## 🎨 Screenshots
 
-_Add screenshots of your app here to showcase the UI_
+<div align="center" >
+
+  <img width="302" alt="iPhone 17 Pro - Screenshot 1" src="https://github.com/user-attachments/assets/47a67935-c387-42fb-a1a8-04d6dbc1237d" />
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <img width="302" alt="iPhone 17 Pro - Screenshot 2" src="https://github.com/user-attachments/assets/92fb6439-8756-4329-8f3d-eeb81fcf84c9" />
+
+</div>
+
+<div align="center" >
+
+  <img width="302" height="656" alt="Simulator Screenshot - iPhone 17 Pro - 2025-11-25 at 14 18 34" src="https://github.com/user-attachments/assets/c902cc91-5f1f-4d28-a188-7a421b9cb809" />
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <img width="302" height="656" alt="Simulator Screenshot - iPhone 17 Pro - 2025-11-25 at 14 26 47" src="https://github.com/user-attachments/assets/6c24eeb1-b863-45d1-a2c3-411c93f09707" />
+
+</div>
+
 
 ## 📝 License
 
@@ -70,8 +87,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 👤 Author
 
 LordMarshy
-- GitHub: [@yourusername](https://github.com/yourusername)
-- Portfolio: [yourportfolio.com](https://yourportfolio.com)
+- GitHub: [@wobwobbird](https://github.com/wobwobbird) 
 
 ---
 
