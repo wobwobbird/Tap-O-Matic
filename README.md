@@ -4,6 +4,8 @@ Tap 'O' Matic is a fun, interactive mobile app that provides multiple mini-games
 
 A React Native mobile application featuring a collection of interactive random number generator games and decision-making tools. Built with Expo, TypeScript, and modern React Native practices.
 
+[![My Skills](https://skillicons.dev/icons?i=typescript,react)](https://skillicons.dev)   
+
 ## 🎨 Screenshots
 
 <!-- <div align="center" >
